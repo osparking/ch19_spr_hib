@@ -52,4 +52,11 @@ public class Country {
     return Objects.equals(codeName, other.codeName)
         && Objects.equals(name, other.name);
   }
+
+  public Country(String name, String codeName) {
+    super();
+    this.name = name;
+    this.codeName = codeName;
+  }
+  
 }
