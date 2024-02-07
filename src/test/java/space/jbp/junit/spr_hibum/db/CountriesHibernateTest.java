@@ -1,5 +1,8 @@
 package space.jbp.junit.spr_hibum.db;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static space.jbp.junit.spr_hibum.db.CountryService.COUNTRY_INIT_DATA;
 
@@ -27,6 +30,16 @@ class CountriesHibernateTest {
   private List<Country> expectedCountries = new ArrayList<>();
   private List<Country> expected국Countries = new ArrayList<>();
 
+  @Test
+  void testCountryList() {
+    List<Country> countries = countryService.getAllCountries();
+    assertNotNull(countries);
+    assertEquals(expectedCountries.size(), countries.size());
+    expectedCountries.forEach(ec -> {
+      assertTrue(countries.contains(ec));
+    });
+  }
+  
   @BeforeEach
   public void setUp() {
     countryService.init();
@@ -45,11 +58,6 @@ class CountriesHibernateTest {
         expected국Countries.add(c);
       }
     });
-  }
-
-  @Test
-  void test() {
-    fail("Not yet implemented");
   }
 
 }
