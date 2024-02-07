@@ -40,6 +40,16 @@ class CountriesHibernateTest {
     });
   }
   
+  @Test
+  void test국CountryList() {
+    List<Country> countries = countryService.getAll국Countries();
+    assertNotNull(countries);
+    assertEquals(expected국Countries.size(), countries.size());
+    expected국Countries.forEach(ec -> {
+      assertTrue(countries.contains(ec));
+    });
+  }
+  
   @BeforeEach
   public void setUp() {
     countryService.init();
